@@ -1,0 +1,47 @@
+// This code utilizes the Bisection method to find roots where fname = the name of the file that evaluates f(x)
+// a and b are the interval for which we have detected a root, tol is the upper bound of length of the final interval,
+// and finally nmax is the maximum number of iterations that the code is allowed to run through
+// Finally, the 4 outputs stand for: n = total iterations executed, l and r are the final interval,
+// c  is the approximation of the root.
+bisect_Wu('fname', 0, 4, .00001, 20)
+
+function [n, l, r, c] = bisect_Wu(fname, a, b, tol, nmax)
+    // Here we are to take the inputs of f at a and b, seeing if their product = a negative number
+    // This would be a preliminary step to see if there is a root held in the interval
+    if sign(fname(a))*sign(fname(b)) == sign(-1) then 
+        mid = a + (b - a)/2
+        tempa = a;
+        tempb = b;
+        for i=1:nmax
+            if tempb - tempa > tol then
+                mid = (a + (b - a)/2)
+                disp(mid)
+                if sign(fname(mid))*sign(fname(tempa)) == sign(-1) then
+                    tempb = mid
+                    printf('Replace b with mid')
+                elseif sign(fname(mid))*sign(fname(tempa)) == sign(-1) then
+                    tempa = mid
+                    printf('Replace a with mid')
+                else
+                    error('Root lost')
+                end
+            end
+            if i = nmax then
+                error('Maximum number of iterations has been achieved')
+            end
+        end
+        if tempb - tempa > tol then
+            disp((a + (b - a)/2))
+        end
+    else 
+        error('There was an issue with the bounds given. Perhaps they are too large and hold an even number of roots, there is no root held between these bounds, or this bound is a bad guess.')
+    end
+endfunction
+
+// TIPS FOR CODE
+// For the report, you only need one, not one for each SEPARATE FILES THOUGH
+// Great opportunity to compare the methods
+    // Secant method is faster except at multiple roots
+// Pick different ICs for secant
+// Try to break it
+// Have test files AND functions

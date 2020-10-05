@@ -1,0 +1,66 @@
+FIRST
+
+q1 =
+
+    0.1728
+
+FIRST Simpson
+
+qs1 =
+
+    1.3675
+
+SECOND
+
+q2 =
+
+    1.4848
+
+SECOND Simpson
+
+qs2 =
+
+    1.6235
+
+THIRD
+
+q3 =
+
+    0.6956
+
+THIRD Simpson
+You have an odd number of segments and an even number of points!
+FOURTH
+
+q4 =
+
+  -0.861218281278664
+
+FOURTH Simpson
+
+qs4 =
+
+  -0.861218281278664
+
+
+true4 =
+
+  -0.861218281278664
+
+FIFTH
+
+q5 =
+
+  -0.909800297584068
+
+FIFTH Simpson
+
+q5 =
+
+  -0.899015652942635
+
+
+true5 =
+
+  -0.899015652942635
+

@@ -1,0 +1,55 @@
+First
+
+euler_err1 =
+
+     0
+
+
+rk4_err1 =
+
+     0
+
+Second
+
+euler_err2 =
+
+    1.7500
+
+
+rk4_err2 =
+
+     0
+
+Third
+
+euler_err3 =
+
+    2.9063
+
+
+rk4_err3 =
+
+     0
+
+Fourth
+
+euler_err4 =
+
+   0.042660138106918
+
+
+rk4_err4 =
+
+     7.286455544486259e-07
+
+Fifth
+
+euler_err5 =
+
+   0.721683150952430
+
+
+rk4_err5 =
+
+   0.050208335019858
+

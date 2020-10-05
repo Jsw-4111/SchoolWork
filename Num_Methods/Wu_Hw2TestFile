@@ -1,0 +1,97 @@
+FIRST
+Maximum number of iterations has been achieved
+FIRST Secant
+Maximum number of runs achieved
+SECOND
+There was an issue with the bounds given. Does not satisfy bisection method conditions.
+SECOND Secant
+Maximum number of runs achieved
+THIRD
+
+n2 =
+
+     1
+
+
+l2 =
+
+    -1
+
+
+r2 =
+
+     1
+
+
+c2 =
+
+     0
+
+THIRD Secant
+Maximum number of runs achieved
+FOURTH
+
+n3 =
+
+    14
+
+
+l3 =
+
+    1.3651
+
+
+r3 =
+
+    1.3652
+
+
+c3 =
+
+    1.3652
+
+FOURTH Secant
+Reached root within target tolerance
+
+ns3 =
+
+     6
+
+
+rs3 =
+
+    1.3652
+
+FIFTH
+
+n4 =
+
+    18
+
+
+l4 =
+
+   -1.1053
+
+
+r4 =
+
+   -1.1053
+
+
+c4 =
+
+   -1.1053
+
+FIFTH Secant
+Reached root within target tolerance
+
+ns4 =
+
+    55
+
+
+rs4 =
+
+   -1.1053
+

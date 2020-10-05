@@ -1,0 +1,3 @@
+Ayo, isya boi John Wu. This is my Computer Networks project which basically just sends files over UDP, and stuff. Kinda cool.
+Anyways, I just thought I'd say hello, seeing as how ya boy be straight BOOLIN', y'know? It's one of those things that just
+happens every now and then, I don't expect you to understand or anything. BAKA.

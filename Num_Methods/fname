@@ -1,0 +1,3 @@
+function [y] = fname(x)
+    y = x^2 - 5
+endfunction

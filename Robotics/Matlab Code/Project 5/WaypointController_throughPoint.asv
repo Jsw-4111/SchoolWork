@@ -1,0 +1,36 @@
+function [ state ] = WaypointController_throughPoint( state, W, P )
+%WaypointController
+
+%TODO - Develop the code to move from waypoint to waypoint going through
+% the waypoint (or the halfplane at the waypoint) before moving to the next
+%Utilize your line following functions from the previous projects.
+    for(i=1:size(W,2)-1) % go through waypoints
+        % Path to waypoint, calculate halfpoint each time
+        % Make halfpoint the center of the circle.
+        % If halfpoint reached, go to round corner
+        vs = P.const * .8; % Sets velocity set point to .8 of the max
+        circleRad = P.wheel_base/(2*(P.const/vs-1));
+        if(i == 1)
+            angle = asin(W(2,1)/sqrt(W(2,1)^2+W(1,1)^2));
+        else
+            angle = asin(W(2,i)/sqrt((W(2,i)-W(2,i-1))^2 ...
+                    +(W(1,i)-W(1,i-1))^2));
+        end
+        % Takes angle at corner to calculate circle distance
+        circDist = circleRad/sin(angle/2);
+        if(W(2,i) < W(2,i-1) && W(1,i) < W(1,i-1))
+            angle = angle + deg2rad(180);
+        elseif(W(2,i) < W(2,i-1))
+            angle = angle + deg2rad(270);
+        elseif((W(1,i) < W(1,i-1))
+            angle = angle + deg2rad(90);
+        end
+        lineToFollow = [W(1, i); W(2, i); angle];
+        destDistance = sqrt(W(1,i)-state(1)
+        while(destDistance > circDist)
+            state = FollowLine(state, lineToFollow, 5, P);
+        end
+    end
+
+end
+

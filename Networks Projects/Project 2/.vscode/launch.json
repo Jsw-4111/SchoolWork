@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RReceiveUDP",
+            "request": "launch",
+            "mainClass": "RReceiveUDP",
+            "projectName": "Project 2"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RSendUDP",
+            "request": "launch",
+            "mainClass": "RSendUDP"
+        }
+    ]
+}

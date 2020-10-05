@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/John Wu/OneDrive - University of Tulsa/CS Labs/Networks/src/unet.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

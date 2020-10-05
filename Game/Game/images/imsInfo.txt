@@ -1,0 +1,34 @@
+
+// imsInfo.txt images
+
+// Frank's images
+s Frank_Left.gif 9
+s Frank_Right.gif 9
+o Frank-gif.gif
+s Consumed.gif 7
+o Dark_Frank.gif
+o Dark_Frank_2.gif
+o Dark_Frank_3.gif
+s Dark_Attack.gif 7
+s Frank_Attack.gif 2
+
+// Enemy Images
+n Enemy_R*.gif 5
+n Enemy_L*.gif 5
+o Enemy_1_AttackL.gif
+o Enemy_1_Attack.gif
+
+// Random Objects
+o projectile.gif
+
+// Title Screen image
+o Title.gif
+
+// Credits
+o Creds.gif
+
+// Backgrounds
+o Back_Castle.png
+
+// State images
+o dead.gif

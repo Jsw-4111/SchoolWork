@@ -1,0 +1,10 @@
+// Here we define a function that uses the secant method to find roots of a function.
+// In this function, we have inputs: fname, x0, x1, tol, and nmax. These are used to
+// access the function, define two initial approximations to the root, provide a
+// tolerance to the secant method, and provide a bound on the number of iterations.
+// Which then outputs two functions: n and r, which contain (n) the total number of
+// iterations and (r) the approximation of the root.
+
+function [n r] = secant_Wu(fname, x0, x1, tol, nmax)
+    
+endfunction
