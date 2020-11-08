@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - jdbcMySQL",
+            "request": "launch",
+            "mainClass": "jdbcMySQL",
+            "projectName": "Project 2"
+        }
+    ]
+}

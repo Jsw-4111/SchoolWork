@@ -1,0 +1,56 @@
+1.	List comments containing the ‘word’ OMG, ordered by increasing Poster and decreasing Date. (4points)
+
+3	10001	10002	OMG	2012-04-06
+
+2.	Display, without duplicates, male Users with female friends.(4 points)
+
+10001	John Wu	M
+10002	Anderson Wu	M
+
+3.	Find pairs of users of opposite gender who became friends this year.(6 points)
+
+10001	John Wu	M
+10002	Anderson Wu	M
+
+4.	For each user, find the number of female and male friends (upto two lines per user in the output).(6 points)
+
+10001	John Wu	M	3	3
+10002	Anderson Wu	M	3	1
+10003	Feng Ming Liang	F	2	0
+10004	Chi Chu Wu	M	2	0
+10005	Link Wu	M	2	0
+10006	Elly Wu	F	1	0
+10007	Daisy Johnson	F	1	0
+
+5.	Find male Users who have received no comments from female Users.(9 points)
+
+10001	John Wu	M
+10003	Feng Ming Liang	F
+10004	Chi Chu Wu	M
+10005	Link Wu	M
+10006	Elly Wu	F
+10007	Daisy Johnson	F
+
+6.	Find Users who have commented at least twice to the same User.(9 points)
+
+10001	John Wu	M
+
+
+7.	For each User who has commented at least twice, list the Text and the Postdate of comments to friends.(12 points)
+
+John Wu	How's it going?	2012-04-06
+John Wu	OMG	2012-04-06
+John Wu	Sounds like fun, what was it like?	2019-10-17
+John Wu	Hey, don't forget to feed the dogs please!	2019-10-22
+John Wu	Hey, how's it going?	2019-02-06
+
+8.	List Users who have posted comments to all female users. (No aggregate operations).(15 points)
+
+10001		John Wu	M
+
+9.	List User(s) who have received comments from the most number of Users.(15 points)
+
+10002	Anderson Wu	M	3
+
+
+

@@ -1,0 +1,21 @@
+DROP VIEW IF EXISTS v1;
+DROP VIEW IF EXISTS v2;
+
+SELECT * FROM users;
+
+CREATE VIEW v1 as
+	SELECT * FROM users;
+
+CREATE VIEW v2 as
+	SELECT DISTINCT * FROM users;
+    
+select * from v1;
+select * from v2;
+    
+SET SQL_SAFE_UPDATES = 0;
+    
+UPDATE v1 SET NAME = 'Jay Hong' WHERE ID = 10001;
+SELECT * FROM v1;
+
+UPDATE v2 set NAME = 'Sam Dean' WHERE ID = 10007;
+SELECT * FROM v2;

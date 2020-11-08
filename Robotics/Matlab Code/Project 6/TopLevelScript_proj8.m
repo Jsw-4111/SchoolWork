@@ -1,3 +1,4 @@
+%Programmed by John Wu
 clear all;
 clear drawRR;
 clear drawLinks;
@@ -14,8 +15,26 @@ drawRR(config_deg, P);
 plot(Goal_Loc(1), Goal_Loc(2), 'r*', 'MarkerSize', 5);
 
 omega = [.4 .4];  %sample omega control
+endConfigDeg = [0, 0]';
+% Here I calculate the ending configuration
+    %Calculation for theta1_E
+endConfigDeg(1) = acos((P.l1^2 + (Goal_Loc(1)^2 + Goal_Loc(2)^2) - P.l2^2)/(2*sqrt(Goal_Loc(1)^2+Goal_Loc(2)^2) *P.l1));
+endConfigDeg(2) = acos((P.l1^2 + P.l2^2 - (Goal_Loc(1)^2 + Goal_Loc(2)^2))/(2*P.l1*P.l2));
+if(atan2(Goal_Loc(2), Goal_Loc(1)) - endConfigDeg(1) < 0)
+    disp("Less than");
+    disp(rad2deg(endConfigDeg(1)));
+    disp(rad2deg(atan2(Goal_Loc(2), Goal_Loc(1))));
+    endConfigDeg(1) = rad2deg(atan2(Goal_Loc(2), Goal_Loc(1)) + endConfigDeg(1));
+    endConfigDeg(2) = -rad2deg(pi - endConfigDeg(2));
+else
+    disp("Greater than");
+    endConfigDeg(1) = rad2deg(atan2(Goal_Loc(2), Goal_Loc(1)) - endConfigDeg(1));
+    endConfigDeg(2) = rad2deg(pi - endConfigDeg(2));
+end
 
-for t = 0:delta_t:10 
+dev_Error = .001; % Used to show that we're close enough to our goal 
+
+for t = 0:delta_t:1000 
     
     
     pose_endEffector = forwardKinematics(config_deg, P);
@@ -26,13 +45,12 @@ for t = 0:delta_t:10
 
     %TODO create a control strategy to move the robot end effector to the
     %goal location -- replace the following example code.
-    if(config_deg(1) > 90)
-        omega = [-.4 .4];
-    elseif(config_deg(1) < 0)
-        omega = [.4 .4];
-    end
+    omega1 = (endConfigDeg(1) - config_deg(1));
+    omega2 = (endConfigDeg(2) - config_deg(2));
+    greaterAngle = max([abs(omega1), abs(omega2)]);
+    omega = [omega1/(greaterAngle*P.max_motor_speed) omega2/(greaterAngle*P.max_motor_speed)];
     
-    %End TODO if you put your motor speeds in the omega row vector [omega(1), omega(2)]
+    %End TODO if you put your motor speeds in the omega rocw vector [omega(1), omega(2)]
     config_next = config_deg + rad2deg(delta_t*omega');
     config_deg = config_next;
     drawRR(config_deg, P);
