@@ -1,0 +1,92 @@
+clear all;
+clear drawRR;
+clear drawLinks;
+
+SetupRRParams();
+delta_t = .02;
+C_circ = [10 5]';
+circ_rad = 5;
+lambda = 1; %1 for ccw -1 for cw
+
+A_pts = [12.5 0; 10 10; 7.5 0; 8.75 5; 11.25 5];
+
+do_circ = 0;  %otherwise (0) draw square.
+
+
+%Set up the initial conditions
+if (do_circ) % 1 for circle, 0 for square
+    config_deg = [45, -45]';  %beginning configuration - set to test
+else
+    config_deg = [51.3178, -51.3178*2]';
+end
+%% draw RR
+%plot the robot arm and some imporant places
+drawRR(config_deg, P);
+if(do_circ)
+    plot(C_circ(1), C_circ(2), 'r*', 'MarkerSize', 5);
+else
+    plot(A_pts(:,1), A_pts(:,2), 'r.', 'MarkerSize', 5);
+end
+omega = [.4 .4];  %sample omega control
+Goal_Loc = [0, 0]';
+endConfigDeg = [0, 0]';
+wp = 1;
+
+for t = 0:delta_t:15 
+    
+    %Remember X_dot = J * THETA_dot
+    pose_endEffector = forwardKinematics(config_deg, P);
+    J = calculateJacobian(config_deg, P);
+    J_inv = pinv(J(1:2,:));
+    
+    %Set the components of the workspace speed
+    v = 8;  %linear speed in cm/s
+    
+    if(do_circ)
+        %TODO Impliment code to follow a circle with radius 5 set at the center
+        %point C_circ
+        
+        
+    else
+        %TODO impliment code to draw the line segments specified by the matrix
+        %A_pts, break out of the loop when done.
+        if(wp <= size(A_pts))
+            % Here I calculate the ending configuration
+            %Calculation for theta1_E
+            Goal_Loc(1) = A_pts(wp, 1); % Make next waypoint into our goal
+            Goal_Loc(2) = A_pts(wp, 2);
+            % Calculate what angle our joints should be at to get to goal
+            endConfigDeg(1) = acos((P.l1^2 + (Goal_Loc(1)^2 + Goal_Loc(2)^2) - P.l2^2)/(2*sqrt(Goal_Loc(1)^2+Goal_Loc(2)^2) *P.l1));
+            endConfigDeg(2) = acos((P.l1^2 + P.l2^2 - (Goal_Loc(1)^2 + Goal_Loc(2)^2))/(2*P.l1*P.l2));
+            if(atan2(Goal_Loc(2), Goal_Loc(1)) - endConfigDeg(1) < 0)
+                endConfigDeg(1) = rad2deg(atan2(Goal_Loc(2), Goal_Loc(1)) + endConfigDeg(1));
+                endConfigDeg(2) = -rad2deg(pi - endConfigDeg(2));
+            else
+                disp("Greater than");
+                endConfigDeg(1) = rad2deg(atan2(Goal_Loc(2), Goal_Loc(1)) - endConfigDeg(1));
+                endConfigDeg(2) = rad2deg(pi - endConfigDeg(2));
+            end
+            
+        delta_pos = Goal_Loc - pose_endEffector(1:2);
+        disToGoal = norm(delta_pos);
+        omega1 = (endConfigDeg(1) - config_deg(1));
+        omega2 = (endConfigDeg(2) - config_deg(2));
+        greaterAngle = max([abs(omega1), abs(omega2)]);
+        omega = [omega1/(greaterAngle*P.max_motor_speed) omega2/(greaterAngle*P.max_motor_speed)];
+        if(disToGoal < .01)
+            
+      
+        else
+            break
+        end
+        
+    end
+    
+    
+    %End TODO if you put your motor speeds in the omega row vector [omega(1), omega(2)]
+    config_next = config_deg + rad2deg(delta_t*omega')';
+    config_deg = config_next;
+    drawRR(config_deg, P);
+    
+    pause(delta_t);
+end 
