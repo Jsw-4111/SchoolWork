@@ -1,0 +1,2 @@
+The traveling salesman problem is a very unique one indeed.
+While I do not have a plan to solve it quite yet, I am bouncing many ideas around.
